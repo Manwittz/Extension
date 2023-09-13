@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Browser Automator MVP</title>
+  <title>Browser Automator</title>
 </head>
 <body>
   <h1>Status: <span id="status">Idle</span></h1>
   <button id="startTask">Start Task</button>
   <button id="stopTask">Stop Task</button>
+  <script>
+    // Send message to background script to start or stop tasks
+    document.getElementById('startTask').addEventListener('click', () => {
+      chrome.runtime.sendMessage({ action: 'start' });
+    });
+    document.getElementById('stopTask').addEventListener('click', () => {
+      chrome.runtime.sendMessage({ action: 'stop' });
+    });
+  </script>
 </body>
 </html>

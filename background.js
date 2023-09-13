@@ -94,3 +94,19 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     }
   }
 });
+
+// Variable to keep track of task status
+let taskStatus = 'idle';
+
+// Listen for messages from popup
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'start') {
+    // Start tasks
+    taskStatus = 'running';
+    // Implement logic for starting tasks here
+  } else if (message.action === 'stop') {
+    // Stop tasks
+    taskStatus = 'idle';
+    // Implement logic for stopping tasks here
+  }
+});
