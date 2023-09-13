@@ -9,6 +9,54 @@ chrome.runtime.onInstalled.addListener(() => {
     "youtube": {
         "url": "https://www.youtube.com/",
         "login_button_selector": "button[aria-label='Sign in']"
+    },
+    "facebook": {
+        "url": "https://www.facebook.com/",
+        "login_button_selector": "button[name='login']"
+    },
+    "instagram": {
+        "url": "https://www.instagram.com/",
+        "login_button_selector": "button[type='submit']"
+    },
+    "twitter": {
+        "url": "https://twitter.com/",
+        "login_button_selector": "a[href='/login']"
+    },
+    "tiktok": {
+        "url": "https://www.tiktok.com/",
+        "login_button_selector": "a[href='/login']"
+    },
+    "linkedin": {
+        "url": "https://www.linkedin.com/",
+        "login_button_selector": "a[href='/login/']"
+    },
+    "reddit": {
+        "url": "https://www.reddit.com/",
+        "login_button_selector": "a[data-click-id='login']"
+    },
+    "discord": {
+        "url": "https://discord.com/",
+        "login_button_selector": "a[href='/login']"
+    },
+    "twitch": {
+        "url": "https://www.twitch.tv/",
+        "login_button_selector": "button[data-a-target='login-button']"
+    },
+    "spotify": {
+        "url": "https://www.spotify.com/",
+        "login_button_selector": "a[href='/us/login']"
+    },
+    "trustpilot": {
+        "url": "https://www.trustpilot.com/",
+        "login_button_selector": "a[href='/users/connect']"
+    },
+    "github": {
+        "url": "https://github.com/",
+        "login_button_selector": "a[href='/login']"
+    },
+    "amazon": {
+        "url": "https://www.amazon.com/",
+        "login_button_selector": "a[data-nav-role='signin']"
     }
 };
 
@@ -18,7 +66,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
     for (const site in websites) {
       const siteInfo = websites[site];
-      if (!openUrls.includes(siteInfo.url)) {
+      if (!openUrls.some(url => url && url.startsWith(siteInfo.url))) {
         // Open the website in a new tab if not already open
         chrome.tabs.create({ url: siteInfo.url });
       }
