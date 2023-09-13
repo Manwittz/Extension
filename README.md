@@ -1,5 +1,7 @@
 # Browser Automator Chrome Extension
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Manwittz/Extension/main?style=flat-square)
+
 ## Introduction
 This is a simple Google Chrome extension designed to automate tasks within the browser. This is the initial version and serves as a starting point for more complex automations.
 
